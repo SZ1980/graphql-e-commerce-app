@@ -1,10 +1,10 @@
-const { db } = require("../db.js");
-const { products } = db;
+// const { db } = require("../db.js");
+// const { products } = db;
 
 exports.Category = {
-  products: (parent, args, context) => {
+  products: ({ id: categoryId }, args, { products }) => {
     // console.log(parent);
-    const categoryId = parent.id;
+    // const categoryId = parent.id;
     return products.filter((product) => product.categoryId === categoryId);
   },
 };
