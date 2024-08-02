@@ -1,7 +1,7 @@
 const { ApolloServer, gql } = require("apollo-server");
 
 const { db } = require("./db.js");
-const { products, categories } = db;
+const { products, categories, reviews } = db;
 // console.log(categories);
 const { typeDefs } = require("./schema");
 const { Query } = require("./resolvers/Query");
@@ -27,6 +27,7 @@ const server = new ApolloServer({
     // sayHello: () => console.log("hello my friend"),
     products,
     categories,
+    reviews,
   },
 });
 
