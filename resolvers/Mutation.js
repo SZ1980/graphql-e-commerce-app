@@ -30,34 +30,34 @@ exports.Mutation = {
 
     return newProduct;
   },
-  //   addReview: (parent, { input }, { db }) => {
-  //     const { date, title, comment, rating, productId } = input;
+  addReview: (parent, { input }, { reviews }) => {
+    const { date, title, comment, rating, productId } = input;
 
-  //     const newReview = {
-  //       id: uuid(),
-  //       date,
-  //       title,
-  //       comment,
-  //       rating,
-  //       productId,
-  //     };
+    const newReview = {
+      id: uuid(),
+      date,
+      title,
+      comment,
+      rating,
+      productId,
+    };
 
-  //     db.reviews.push(newReview);
+    reviews.push(newReview);
 
-  //     return newReview;
-  //   },
-  //   deleteCategory: (parent, { id }, { db }) => {
-  //     db.categories = db.categories.filter((category) => category.id !== id);
-  //     db.products = db.products.map((product) => {
-  //       if (product.categoryId === id)
-  //         return {
-  //           ...product,
-  //           categoryId: null,
-  //         };
-  //       else return product;
-  //     });
-  //     return true;
-  //   },
+    return newReview;
+  },
+  deleteCategory: (parent, { id }, { categories, products }) => {
+    categories = categories.filter((category) => category.id !== id);
+    products = products.map((product) => {
+      if (product.categoryId === id)
+        return {
+          ...product,
+          categoryId: null,
+        };
+      else return product;
+    });
+    return true;
+  },
   //   deleteProduct: (parent, { id }, { db }) => {
   //     db.products = db.products.filter((product) => product.id !== id);
   //     db.reviews = db.reviews.filter((review) => review.productId !== id);
