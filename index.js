@@ -5,16 +5,12 @@ const { products, categories, reviews } = db;
 // console.log(categories);
 const { typeDefs } = require("./schema");
 const { Query } = require("./resolvers/Query");
-// const { Mutation } = require("./resolvers/Mutation");
+const { Mutation } = require("./resolvers/Mutation");
 const { Category } = require("./resolvers/Category");
 const { Product } = require("./resolvers/Product");
 
 // reviews: [Review!]!
 // image: String!
-
-// const resolvers = {
-//   Query,
-// };
 
 const server = new ApolloServer({
   typeDefs,
@@ -22,6 +18,7 @@ const server = new ApolloServer({
     Query,
     Category,
     Product,
+    Mutation,
   },
   context: {
     // sayHello: () => console.log("hello my friend"),
