@@ -2,8 +2,17 @@
 // const { products, categories } = db;
 
 exports.Query = {
-  products: (parent, args, { products }) => {
-    return products;
+  products: (parent, { filter }, { products }) => {
+    let filteredProducts = products;
+    if (filter) {
+      // const { onSale, avgRating } = filter;
+      if (filter.onSale === true) {
+        filteredProducts = filteredProducts.filter((product) => {
+          return product.onSale;
+        });
+      }
+    }
+    return filteredProducts;
   },
   product: (parent, { id }, { products }) => {
     // const { id } = args;
